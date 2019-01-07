@@ -18,22 +18,25 @@ new Vue({
         this.player2.health = 100;
     },
     attack: function() {
-      this.player2.health -= Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+      this.player2.health -= this.calculateDamage(10,3);
       var instance = this;
       setTimeout(function() {
-        instance.player1.health -= Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+        instance.player1.health -= instance.calculateDamage(12,4);
       }, 2000);
     },
     specialAttack: function() {
-      this.player2.health -= Math.floor(Math.random() * (this.player2.health - 1 + 1)) + 10;
+      this.player2.health -= this.calculateDamage(this.player2.health/2,5);
       var instance = this;
       setTimeout(function() {
-        instance.player1.health -= Math.floor(Math.random() * (instance.player1.health - 1 + 1)) + 1;
+        instance.player1.health -= instance.calculateDamage(instance.player1.health/2,5) ;
       }, 2000);
     },
     heal: function() {
-      this.player1.health += (100 - (this.player1.health)) / 2;
-      this.player2.health += (100 - (this.player2.health)) / 2;
+      this.player1.health += this.calculateDamage(10,3);
+      this.player2.health += this.calculateDamage(10,3);
+    },
+    calculateDamage : function(min,max){
+      return Math.max(Math.floor(Math.random() * max) + 1, min);
     }
   }
 });
