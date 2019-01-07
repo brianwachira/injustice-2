@@ -19,6 +19,10 @@ new Vue ({
   specialAttack : function(){
     this.player1.health -= Math.floor(Math.random() * (20 - 1 + 1)) + 10;
     this.player2.health -= Math.floor(Math.random() * (20 - 1 + 1)) + 10;
+  },
+  heal : function(){
+    this.player1.health += (100- (this.player1.health))/2;
+    this.player2.health += (100-(this.player2.health))/2;
   }
  }
 });
