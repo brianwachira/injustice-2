@@ -21,7 +21,11 @@ new Vue ({
     },2000);
   },
   specialAttack : function(){
-    this.player2.health -= Math.floor(Math.random() * (20 - 1 + 1)) + 10;
+    this.player2.health -= Math.floor(Math.random() * (this.player2.health - 1 + 1)) + 10;
+    var instance = this;
+    setTimeout(function(){
+     instance.player1.health -= Math.floor(Math.random() * (instance.player1.health - 1 + 1)) + 1;
+    },2000);
   },
   heal : function(){
     this.player1.health += (100- (this.player1.health))/2;
