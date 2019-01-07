@@ -11,10 +11,10 @@ new Vue ({
    health : 100
    }
  },
- computed : {
-   healthbar : function(){
-     return{
-   };
+ methods : {
+   attack : function(){
+     this.player1.health -= Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+     this.player2.health -= Math.floor(Math.random() * (10 - 1 + 1)) + 1; 
   }
  }
 });
