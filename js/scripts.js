@@ -25,10 +25,10 @@ new Vue({
       }, 2000);
     },
     specialAttack: function() {
-      this.player2.health -= this.calculateDamage(this.player2.health/2,5);
+      this.player2.health -= this.calculateDamage(this.player2.health/(Math.max(Math.floor(Math.random() * 5) + 1,1)),5);
       var instance = this;
       setTimeout(function() {
-        instance.player1.health -= instance.calculateDamage(instance.player1.health/2,5) ;
+        instance.player1.health -= instance.calculateDamage(instance.player1.health/(Math.max(Math.floor(Math.random() * 5) + 1, 1)),5) ;
       }, 2000); 
     },
     heal: function() {  
