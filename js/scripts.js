@@ -15,6 +15,10 @@ new Vue ({
    attack : function(){
      this.player1.health -= Math.floor(Math.random() * (10 - 1 + 1)) + 1;
      this.player2.health -= Math.floor(Math.random() * (10 - 1 + 1)) + 1; 
+  },
+  specialAttack : function(){
+    this.player1.health -= Math.floor(Math.random() * (20 - 1 + 1)) + 10;
+    this.player2.health -= Math.floor(Math.random() * (20 - 1 + 1)) + 10;
   }
  }
 });
