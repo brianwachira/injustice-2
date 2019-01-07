@@ -1,8 +1,7 @@
 new Vue({
   el: "#app",
   data: {
-    show: true,
-    player1wins: false,
+    gameHaStarted : false,
     player1: {
       name: "You, the guy that knew the monster killed Alfred but still let 'it' live",
       health: 100
@@ -13,6 +12,11 @@ new Vue({
     }
   },
   methods: {
+    startGame : function()  {
+        this.gameHaStarted = true;
+        this.player1.health = 100;
+        this.player2.health = 100;
+    },
     attack: function() {
       this.player2.health -= Math.floor(Math.random() * (10 - 1 + 1)) + 1;
       var instance = this;
