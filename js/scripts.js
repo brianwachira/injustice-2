@@ -29,11 +29,16 @@ new Vue({
       var instance = this;
       setTimeout(function() {
         instance.player1.health -= instance.calculateDamage(instance.player1.health/2,5) ;
-      }, 2000);
+      }, 2000); 
     },
-    heal: function() {
-      this.player1.health += this.calculateDamage(10,3);
-      this.player2.health += this.calculateDamage(10,3);
+    heal: function() {  
+      if  (this.player1.health <90 && this.player2.health < 90){
+          this.player1.health +=10;
+          this.player2.health +=10;
+        }else {
+          this.player1.health = 100;
+          this.player2.health = 100;
+        }
     },
     calculateDamage : function(min,max){
       return Math.max(Math.floor(Math.random() * max) + 1, min);
