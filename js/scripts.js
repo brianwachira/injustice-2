@@ -19,17 +19,25 @@ new Vue({
     },
     attack: function() {
       this.player2.health -= this.calculateDamage(10,3);
+      if(this.checkWin()){
+        return;
+      }
       var instance = this;
       setTimeout(function() {
+        this.checkWin();
         instance.player1.health -= instance.calculateDamage(12,4);
       }, 2000);
     },
     specialAttack: function() {
       this.player2.health -= this.calculateDamage(3,20);
+      if(this.checkWin()){
+        return;
+      }
       var instance = this;
       setTimeout(function() {
         instance.player1.health -= instance.calculateDamage(2,20) ;
-      }, 2000); 
+      }, 2000);
+      this.checkWin();
     },
     heal: function() {  
       if  (this.player1.health <90 && this.player2.health < 90){
@@ -45,6 +53,24 @@ new Vue({
     },
     calculateDamage : function(min,max){
       return Math.max(Math.floor(Math.random() * max) + 1, min);
+    },
+    checkWin : function() {
+      if (this.player1.health <= 0) {
+        if  (confirm('You won! New Game?')){
+          this.startGame();
+        }else {
+          this.gameHaStarted = false;
+        }
+        return true;
+      } else if (this.player2.health <= 0)  {
+        if  (confirm("You lost! New Game?")){
+          this.startGame();
+        }else {
+          this.gameHaStarted = false
+        }
+        return true;
+      }
+      return false;
     }
   }
 });
