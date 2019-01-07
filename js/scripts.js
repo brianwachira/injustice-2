@@ -24,8 +24,8 @@ new Vue({
       }
       var instance = this;
       setTimeout(function() {
-        this.checkWin();
         instance.player1.health -= instance.calculateDamage(12,4);
+        instance.checkWin();
       }, 2000);
     },
     specialAttack: function() {
@@ -37,7 +37,7 @@ new Vue({
       setTimeout(function() {
         instance.player1.health -= instance.calculateDamage(2,20) ;
       }, 2000);
-      this.checkWin();
+      instance.checkWin();
     },
     heal: function() {  
       if  (this.player1.health <90 && this.player2.health < 90){
