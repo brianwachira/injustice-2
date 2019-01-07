@@ -2,6 +2,7 @@ new Vue ({
  el : "#app",
  data : {
    show : true,
+   player1wins : false,
    player1 : {
    name: "You, the guy that knew the monster killed Alfred but still let 'it' live",
    health : 100
@@ -13,11 +14,13 @@ new Vue ({
  },
  methods : {
    attack : function(){
-     this.player1.health -= Math.floor(Math.random() * (10 - 1 + 1)) + 1;
-     this.player2.health -= Math.floor(Math.random() * (10 - 1 + 1)) + 1; 
+    this.player2.health -= Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+    var instance = this;
+    setTimeout(function(){
+     instance.player1.health -= Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+    },2000);
   },
   specialAttack : function(){
-    this.player1.health -= Math.floor(Math.random() * (20 - 1 + 1)) + 10;
     this.player2.health -= Math.floor(Math.random() * (20 - 1 + 1)) + 10;
   },
   heal : function(){
