@@ -56,14 +56,14 @@ new Vue({
     },
     checkWin : function() {
       if (this.player1.health <= 0) {
-        if  (confirm('You won! New Game?')){
+        if  (confirm('You lost! The monster wins. New Game?')){
           this.startGame();
         }else {
           this.gameHaStarted = false;
         }
         return true;
       } else if (this.player2.health <= 0)  {
-        if  (confirm("You lost! New Game?")){
+        if  (confirm("You won! The monster wins. New Game?")){
           this.startGame();
         }else {
           this.gameHaStarted = false
